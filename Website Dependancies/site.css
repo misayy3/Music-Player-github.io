@@ -57,7 +57,7 @@ body {
 
 h1 {
 	font-size: 3rem;
-	color: white;
+	color: rgb(0, 0, 0);
 	display: block;
 	text-align: center;
 }
@@ -108,7 +108,7 @@ header {
 }
 
 .bg1 {
-	background-color: #ffe400;
+	background-color: #ffafdb;
 }
 
 .bg2 {
@@ -136,5 +136,5 @@ footer {
 }
 
 #incomplete {
-	background-color: red;
+	background-color: rgb(255, 219, 233);
 }
