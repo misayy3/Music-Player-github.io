@@ -100,7 +100,7 @@ img {
 
 
 header {
-	background-color: #ffafdb;
+	background-color: #ffe0f1;
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-top: 20px;
@@ -108,11 +108,11 @@ header {
 }
 
 .bg1 {
-	background-color: #ffafdb;
+	background-color: #ffe0f1;
 }
 
 .bg2 {
-	background-color: #ffafdb;
+	background-color: #ffe0f1;
 }
 
 .bg3 {
@@ -128,7 +128,7 @@ iframe {
 
 footer {
 	height: 100px;
-	background-color: #001bff;
+	background-color: #ffe0f1;
 }
 
 #complete {
@@ -136,5 +136,5 @@ footer {
 }
 
 #incomplete {
-	background-color: rgb(255, 219, 233);
+	background-color: rgb(#ffe0f1);
 }
