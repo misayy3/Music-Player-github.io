@@ -5,7 +5,7 @@
 //Global Variables
 //
 float X, Y, Width, Height;
-float topDisplayX, topDisplayY, topDisplayWidth, topDisplayHeight
+float topDisplayX, topDisplayY, topDisplayWidth, topDisplayHeight;
 float y;
 
 void setup() {
