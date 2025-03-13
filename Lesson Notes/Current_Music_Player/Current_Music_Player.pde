@@ -43,6 +43,11 @@ void setup() {
   rect(X, Y, Width, Height);
   rect(X, Y, Width, Height);
   rect(X, Y, Width, Height);
+  rect(X, Y, Width, Height);
+  rect(X, Y, Width, Height);
+  rect(X, Y, Width, Height);
+  rect(X, Y, Width, Height);
+
   //  
  
 }
