@@ -47,6 +47,8 @@ void setup() {
   SongArtistY = appHeight * 0.25;
   SongArtistWidth = appWidth * 0.125;
   SongArtistHeight = appHeight * 0.0625;
+  TimeBarX = appWidth * 0.50;
+  TimeBarY = appHeight * 0.4375;
 
   rect(QuitX, QuitY, QuitWidth, QuitHeight);
   rect(SongImageX, SongImageY, SongImageWidth, SongImageHeight);
