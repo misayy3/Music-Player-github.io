@@ -32,17 +32,21 @@ void setup() {
   int appHeight = displayHeight;
   
   QuitX = appWidth * 0.9375;
-  QuitY = appHeight * 0.0625;
-  QuitWidth = appWidth * 1.5;
-  QuitHeight = appHeight * 1.2;
-  SongImageX = appWidth * 0.25;
-  SongImageY = appHeight * 0.25;
-  SongImageWidth = appWidth * 0.50;
-  SongImageHeight = appHeight * 0.30;
-  SongTitleX = appWidth * 0.25;
+  QuitY = appHeight * 0.0;
+  QuitWidth = appWidth * 0.12;
+  QuitHeight = appHeight * 0.12;
+  SongImageX = appWidth * 0.0625;
+  SongImageY = appHeight * 0.1875;
+  SongImageWidth = appWidth * 0.375;
+  SongImageHeight = appHeight * 0.60;
+  SongTitleX = appWidth * 0.50;
   SongTitleY = appHeight * 0.25;
-  SongTitleWidth = appWidth * 0.50;
-  SongTitleHeight = appHeight * 0.30;
+  SongTitleWidth = appWidth * 0.1875;
+  SongTitleHeight = appHeight * 0.09375;
+  SongArtistX = appWidth * 0.50;
+  SongArtistY = appHeight * 0.25;
+  SongArtistWidth = appWidth * 0.125;
+  SongArtistHeight = appHeight * 0.0625;
 
   rect(QuitX, QuitY, QuitWidth, QuitHeight);
   rect(SongImageX, SongImageY, SongImageWidth, SongImageHeight);
