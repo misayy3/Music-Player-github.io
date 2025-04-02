@@ -31,8 +31,8 @@ void setup() {
   int appWidth = displayWidth;
   int appHeight = displayHeight;
   
-  QuitX = appWidth * 1.0;
-  QuitY = appHeight * 0.0;
+  QuitX = appWidth * 0.9375;
+  QuitY = appHeight * 0.0625;
   QuitWidth = appWidth * 1.5;
   QuitHeight = appHeight * 1.2;
   SongImageX = appWidth * 0.25;
