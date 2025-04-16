@@ -22,7 +22,7 @@ void setup() {
   imageDivHeight = appHeight;
   //
   //Image Aspect Ratio Algorithm
-  String myFirstImagePathway = "https://github.com/misayy3/Music-Player-github.io/blob/main/Images%202/ImagesStarterCode/spotifylogo.png?raw=true";
+  String myFirstImagePathway = "\\FS-052\studuser$\Gr10\m.yousif3\My Documents\GitHub\Music-Player-github.io\Images 2\ImagesStarterCode\spotifylogo.png";
   myFirstImage = loadImage( myFirstImagePathway );
   //
   //DIV
