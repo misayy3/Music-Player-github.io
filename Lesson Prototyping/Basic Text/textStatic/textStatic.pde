@@ -1,6 +1,6 @@
 // Text: Static
 //
-String Title = "Misa's Super Amazing Cool Music Player";
+String Title = "Misa's Amazing Music Player";
 //
 //Display
 size(700, 500);
@@ -28,7 +28,20 @@ TitleHeight = appHeight * 1/10;
 rect(TitleX, TitleY, TitleWidth, TitleHeight);
 //
 //Font Size Algorithm
-fontSize = TitleHeight+3;
+float TimesNewRomanBoldAspectRatio = 1.04;
+fontSize = TitleHeight * TimesNewRomanBoldAspectRatio;
+textFont(TitleFont, fontSize);
+println( textWidth(Title), TitleWidth );
+while ( textWidth(Title) > TitleWidth ) {
+  fontSize = fontSize * 0.99;
+  textFont(TitleFont, fontSize);
+  println( "Step:", textWidth(Title), TitleWidth );
+
+}
+
+//continue
+
+
 //
 color pinkBlossom = #F7B9D4;
 fill(pinkBlossom);
