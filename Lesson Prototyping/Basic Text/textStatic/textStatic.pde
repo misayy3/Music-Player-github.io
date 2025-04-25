@@ -1,7 +1,13 @@
-// Text: Static
+// Text: Dynamic
 //
+//Global Variables
+PFont appFont;
+float fontSize;
 String Title = "Misa's Amazing Music Player";
 //
+float TitleX, TitleY, TitleWidth, TitleHeight;
+//
+void setup() {
 //Display
 size(700, 500);
 int appWidth = width;
@@ -11,14 +17,13 @@ int shorterSide = ( appWidth >= appHeight ) ? appHeight : appWidth ; //Landscape
 /*Fonts from OS
 println ("Start of Console");
 String[] fontList = PFont.list(); 
-printArray(fontList);
+printArray(fontList); 
 */
-float fontSize = shorterSide;
-PFont TitleFont = createFont("Times New Roman Bold", fontSize);
-//Tools / Create Font / Find Font / Do Not Press "OK", known bug
+fontSize = shorterSide;
+appFont = createFont("Times New Roman Bold", fontSize);
+//Tools / Create Font / Find Font / Do Not Press "OK", known bug (not loadFont() )
 //
 //Population
-float TitleX, TitleY, TitleWidth, TitleHeight;
 TitleX = appWidth * 1/4;
 TitleY = appHeight * 1/4;
 TitleWidth = appWidth * 1/2;
@@ -30,27 +35,33 @@ rect(TitleX, TitleY, TitleWidth, TitleHeight);
 //Font Size Algorithm
 float TimesNewRomanBoldAspectRatio = 1.04;
 fontSize = TitleHeight * TimesNewRomanBoldAspectRatio;
-textFont(TitleFont, fontSize);
+textFont(appFont, fontSize);
 println( textWidth(Title), TitleWidth );
 while ( textWidth(Title) > TitleWidth ) {
   fontSize = fontSize * 0.99;
-  textFont(TitleFont, fontSize);
+  textFont(appFont, fontSize);
   println( "Step:", textWidth(Title), TitleWidth );
-
 }
-
-//continue
-
-
 //
+// Code before Drawing Text
 color pinkBlossom = #F7B9D4;
 fill(pinkBlossom);
 textAlign (CENTER, CENTER);
 //Values: [Left | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-textFont(TitleFont, fontSize);
+textFont(appFont, fontSize);
+//Drawing Text
 text(Title, TitleX, TitleY, TitleWidth, TitleHeight);
 color white = #FFFFFF;
 fill(white);
-
-
-//text(Title, TitleX, TitleY, TitleWidth, TitleHeight);
+//
+} //End Setup
+//
+void draw() {
+  //EMPTY Draw
+} //End Draw
+//
+void mousePressed() {} // End Mouse Pressed
+//
+void keyPressed() {} //End Key Pressed
+//
+//End of MAIN
