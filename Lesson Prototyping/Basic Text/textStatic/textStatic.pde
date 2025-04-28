@@ -8,7 +8,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 Minim minim;
-int numberOfSongs = 1; //Best Practice
+int numberOfSongs = 1;
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
 AudioMetaData[] playListMetaData = new AudioMetaData[ numberOfSongs ];
 int currentSong = numberOfSongs - numberOfSongs; //Zero
@@ -72,7 +72,7 @@ textAlign (CENTER, CENTER);
 //Values: [Left | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
 textFont(appFont, fontSize);
 //Drawing Text
-text(playListMetaData[currentSong].title(), TitleWidth, TitleHeight);
+text(playListMetaData[currentSong].title(), TitleX, TitleY, TitleWidth, TitleHeight);
 color white = #FFFFFF;
 fill(white);
 //
@@ -82,7 +82,7 @@ void draw() {
   //EMPTY Draw
 } //End Draw
 //
-void mousePressed() {} // End Mouse Pressed
+void mousePressed() {} //End Mouse Pressed
 //
 void keyPressed() {} //End Key Pressed
 //
