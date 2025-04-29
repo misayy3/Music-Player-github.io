@@ -6,15 +6,15 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
-//Global Variables
+PFont appFont;
+float fontSize;
+String Title = "Misa's Music Player";
+//
 Minim minim;
 int numberOfSongs = 1;
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
 AudioMetaData[] playListMetaData = new AudioMetaData[ numberOfSongs ];
 int currentSong = numberOfSongs - numberOfSongs; //Zero
-//
-PFont appFont;
-float fontSize;
 //
 float TitleX, TitleY, TitleWidth, TitleHeight;
 //
