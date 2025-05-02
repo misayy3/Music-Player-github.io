@@ -8,7 +8,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 Minim minim;
-int numberOfSongs = 3;
+int numberOfSongs = 6;
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
 AudioMetaData[] playListMetaData = new AudioMetaData[ numberOfSongs ];
 int currentSong = numberOfSongs - numberOfSongs; //ZERO
@@ -67,76 +67,152 @@ void setup() {
   //
   minim = new Minim(this);
   String LessonPrototypingFolder = "Lesson Prototyping/";
-  String musicPong = "Music Pong/";
-  String musicAll = "Music All/";
-  String pongWorld = "Pong World";
-  String beatYourCompetition = "Beat_Your_Competition";
-  String cycles = "Cycles";
-  String eureka = "Eureka";
-  String ghostWalk = "Ghost_Walk";
-  String groove = "groove";
-  String newsroom = "Newsroom";
-  String startYourEngines = "Start_Your_Engines";
-  String theSimplest = "The_Simplest";
-  //Able to Music Load Faster with an Array
+  String MusicAll = "Music/";
+  String CloseToYou = "Close To You - Frank Ocean";
+  String Math = "Math - Frank Ocean";
+  String Nights = "Nights - Frank Ocean";
+  String RocketLove = "Rocket Love - Frank Ocean ";
+  String SelfControl = "Self Control - Frank Ocean";
+  String SongsForWomen = "Songs for Women - Frank Ocean";
+  //
+  QuitX = appWidth * 0.9375;
+  QuitY = appHeight * 0.0;
+  QuitWidth = appWidth * 0.12;
+  QuitHeight = appHeight * 0.12;
+  SongImageX = appWidth * 0.0625;
+  SongImageY = appHeight * 0.1875;
+  SongImageWidth = appWidth * 0.375;
+  SongImageHeight = appHeight * 0.60;
+  SongTitleX = appWidth * 0.50;
+  SongTitleY = appHeight * 0.25;
+  SongTitleWidth = appWidth * 0.1875;
+  SongTitleHeight = appHeight * 0.09375;
+  SongArtistX = appWidth * 0.50;
+  SongArtistY = appHeight * 0.36;
+  SongArtistWidth = appWidth * 0.125;
+  SongArtistHeight = appHeight * 0.0625;
+  TimeBarX = appWidth * 0.50;
+  TimeBarY = appHeight * 0.4375;
+  TimeBarWidth = appWidth * 0.453125;
+  TimeBarHeight = appHeight * 0.0325;
+  PositionOfTheSongX = appWidth * 0.50;
+  PositionOfTheSongY = appHeight * 0.50;
+  PositionOfTheSongWidth = appWidth * 0.0625;
+  PositionOfTheSongHeight = appHeight * 0.03125;
+  TimeRemainingX = appWidth * 0.875;
+  TimeRemainingY = appHeight * 0.50;
+  TimeRemainingWidth = appWidth * 0.03125;
+  TimeRemainingHeight = appHeight * 0.03125;
+  TotalTimeOfSongX = appWidth * 0.921875;
+  TotalTimeOfSongY = appHeight * 0.50;
+  TotalTimeOfSongWidth = appWidth * 0.03125;
+  TotalTimeOfSongHeight = appHeight * 0.03125;
+  FastReverseX = appWidth * 0.50;
+  FastReverseY = appHeight * 0.5625;
+  FastReverseWidth = appWidth * 0.03125;
+  FastReverseHeight = appHeight * 0.046875;
+  LoopOnceX = appWidth * 0.54688;
+  LoopOnceY = appHeight * 0.5625;
+  LoopOnceWidth = appWidth * 0.015625;
+  LoopOnceHeight = appHeight * 0.046875;
+  LoopInfiniteX = appWidth * 0.5625;
+  LoopInfiniteY = appHeight * 0.5625;
+  LoopInfiniteWidth = appWidth * 0.015625;
+  LoopInfiniteHeight = appHeight * 0.046875;
+  PreviousX = appWidth * 0.59375;
+  PreviousY = appHeight * 0.5625;
+  PreviousWidth = appWidth * 0.03125;
+  PreviousHeight = appHeight * 0.046875;
+  MuteX = appWidth * 0.640625;
+  MuteY = appHeight * 0.5625;
+  MuteWidth = appWidth * 0.03125;
+  MuteHeight = appHeight * 0.046875;
+  PauseX = appWidth * 0.6875;
+  PauseY = appHeight * 0.5625;
+  PauseWidth = appWidth * 0.03125;
+  PauseHeight = appHeight * 0.046875;
+  PlayX = appWidth * 0.734375;
+  PlayY = appHeight * 0.5625;
+  PlayWidth = appWidth * 0.03125;
+  PlayHeight = appHeight * 0.046875;
+  StopX = appWidth * 0.78125;
+  StopY = appHeight * 0.5625;
+  StopWidth = appWidth * 0.03125;
+  StopHeight = appHeight * 0.046875;
+  NextX = appWidth * 0.828125;
+  NextY = appHeight * 0.5625;
+  NextWidth = appWidth * 0.03125;
+  NextHeight = appHeight * 0.046875;
+  ShuffleX = appWidth * 0.875;
+  ShuffleY = appHeight * 0.5625;
+  ShuffleWidth = appWidth * 0.03125;
+  ShuffleHeight = appHeight * 0.046875;
+  FastForwardX = appWidth * 0.921875;
+  FastForwardY = appHeight * 0.5625;
+  FastForwardWidth = appWidth * 0.03125;
+  FastForwardHeight = appHeight * 0.046875;
+  //
+  rect(QuitX, QuitY, QuitWidth, QuitHeight);
+  rect(SongImageX, SongImageY, SongImageWidth, SongImageHeight);
+  rect(SongTitleX, SongTitleY, SongTitleWidth, SongTitleHeight);
+  rect(SongArtistX, SongArtistY, SongArtistWidth, SongArtistHeight);
+  rect(TimeBarX, TimeBarY, TimeBarWidth, TimeBarHeight);
+  rect(PositionOfTheSongX, PositionOfTheSongY, PositionOfTheSongWidth, PositionOfTheSongHeight);
+  rect(TimeRemainingX, TimeRemainingY, TimeRemainingWidth, TimeRemainingHeight);
+  rect(TotalTimeOfSongX, TotalTimeOfSongY, TotalTimeOfSongWidth, TotalTimeOfSongHeight);
+  rect(FastReverseX, FastReverseY, FastReverseWidth, FastReverseHeight);
+  rect(LoopOnceX, LoopOnceY, LoopOnceWidth, LoopOnceHeight);
+  rect(LoopInfiniteX, LoopInfiniteY, LoopInfiniteWidth, LoopInfiniteHeight);
+  rect(PreviousX, PreviousY, PreviousWidth, PreviousHeight);
+  rect(MuteX, MuteY, MuteWidth, MuteHeight);
+  rect(PauseX, PauseY, PauseWidth, PauseHeight);
+  rect(PlayX, PlayY, PlayWidth, PlayHeight);
+  rect(StopX, StopY, StopWidth, StopHeight);
+  rect(NextX, NextY, NextWidth, NextHeight);
+  rect(ShuffleX, ShuffleY, ShuffleWidth, ShuffleHeight);
+  rect(FastForwardX, FastForwardY, FastForwardWidth, FastForwardHeight);
   //
   String fileExtension_mp3 = ".mp3";
+  String musicDirectory = "../" + LessonPrototypingFolder + MusicAll; 
+  String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
-  String musicDirectory = "../../" + lessonDependanciesFolder + musicAll; //musicPong
-  //Create a FOR loop to loadFile() a changing songName, Create a Procedure with two Arrays first
-  String file = musicDirectory + beatYourCompetition + fileExtension_mp3; //relative pathway or directory
-  //String file = musicDirectory + pongWorld + fileExtension_mp3; //relative pathway or directory
   currentSong=0;
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  playList[ currentSong ] = minim.loadFile( file ); 
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + cycles + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + CloseToYou + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + eureka + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + Math + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file ); 
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + ghostWalk + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + Nights + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file ); 
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + groove + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + RocketLove + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file ); 
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + newsroom + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + SelfControl + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file ); 
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + startYourEngines + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
+  file = musicDirectory + SongsForWomen + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
-  currentSong++;
-  file = musicDirectory + theSimplest + fileExtension_mp3; //relative pathway or directory
-  playList[ currentSong ] = minim.loadFile( file ); //ERROR: Verify Spelling & Library installed, Sketch / Import Library
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  //
-  //Music Testing
   currentSong=0;
-  //playList[currentSong].play();
   //
-  //println("Start of Console");
-  //Fonts from OS
-  /*
-  String[] fontList = PFont.list(); //To list all fonts available on system
-   printArray(fontList); //For listing all possible fonts to choose, then createFont
-   */
-  appFont = createFont ("Harrington", appShortSide); //Verify font exists
-  //Tools / Create Font / Find Font / Do Not Press "OK", known bug, cannot mix loadFont() and createFont()
+  appFont = createFont ("Times New Roman Bold", fontSize); 
   //
   //Population
   quitX = appWidth - appShortSide*1/20;
@@ -146,15 +222,13 @@ void setup() {
   imageDivX = appWidth*1/4;
   imageDivY = appHeight*1/5;
   imageDivWidth = appWidth*1/2;
-  imageDivHeight = appHeight*1.5/5; //1+1.5=2.5, half of the total height
+  imageDivHeight = appHeight*1.5/5; 
   songTitleDivX = appWidth*1/4;
   songTitleDivY = appHeight*1/20;
   songTitleDivWidth = appWidth*1/2;
   songTitleDivHeight = appHeight*1/10;
   //
-  //rect(DIV) is a square to start, by design
-  int numberOfButtons = 13; //Half a button on either side as space, Center Button is Play
-  //println("Button Width:", appWidth/numberOfButtons);
+  int numberOfButtons = 13; 
   int widthOfButton = appWidth/numberOfButtons;
   int beginningButtonSpace = widthOfButton;
   int buttonY = appHeight*3/5;
@@ -196,7 +270,7 @@ void setup() {
   pauseWidth2 = pauseDivWidth*1/8;
   pauseHeight2 = pauseDivHeight*1/2;
   //
-  playDivX = beginningButtonSpace + widthOfButton*5; //TEACHER Only" manipulate this number to draw simulate all buttons
+  playDivX = beginningButtonSpace + widthOfButton*5;
   playDivY = buttonY;
   playDivWidth = widthOfButton;
   playDivHeight = widthOfButton;
@@ -250,7 +324,6 @@ void setup() {
   float musicSongSpaceY = stopDivY + widthOfButton + musicSongPaddingY;
   float musicSongSpaceWidth = appWidth - widthOfButton*2;
   float musicSongSpaceHeight = appHeight - musicSongPaddingY - musicSongSpaceY;
-  //rect(musicSongSpaceX, musicSongSpaceY, musicSongSpaceWidth, musicSongSpaceHeight); //testing only
   songPositionDivX = musicSongSpaceX;
   songPositionDivY = musicSongSpaceY;
   songPositionDivWidth = musicSongSpaceWidth*1/5;
@@ -269,81 +342,24 @@ void setup() {
   timeBarDivWidth = musicSongSpaceWidth;
   timeBarDivHeight = musicSongSpaceHeight*1/5;
   //
-  //DIVs
-  //rect(X, Y, Width, Height)
-  rect(quitX, quitY, quitWidth, quitHeight);
-  rect(imageDivX, imageDivY, imageDivWidth, imageDivHeight);
-  rect(stopDivX, stopDivY, stopDivWidth, stopDivHeight);  //*0
-  rect(muteDivX, muteDivY, muteDivWidth, muteDivHeight); //*1
-  rect(previousDivX, previousDivY, previousDivWidth, previousDivHeight); //*2
-  rect(fastRewindDivX, fastRewindDivY, fastRewindDivWidth, fastRewindDivHeight); //*3
-  rect(pauseDivX, pauseDivY, pauseDivWidth, pauseDivHeight); //*4
-  rect(playDivX, playDivY, playDivWidth, playDivHeight); //*5
-  rect(loopOnceDivX, loopOnceDivY, loopOnceDivWidth, loopOnceDivHeight);
-  rect(loopInfiniteDivX, loopInfiniteDivY, loopInfiniteDivWidth, loopInfiniteDivHeight);
-  rect(fastForwardDivX, fastForwardDivY, fastForwardDivWidth, fastForwardDivHeight);
-  rect(nextDivX, nextDivY, nextDivWidth, nextDivHeight);
-  rect(shuffleDivX, shuffleDivY, shuffleDivWidth, shuffleDivHeight);
-  rect(songPositionDivX, songPositionDivY, songPositionDivWidth, songPositionDivHeight);
-  rect(songTitleDivX, songTitleDivY, songTitleDivWidth, songTitleDivHeight);
-  rect(timeBarDivX, timeBarDivY, timeBarDivWidth, timeBarDivHeight);
-  rect(timeRemainingDivX, timeRemainingDivY, timeRemainingDivWidth, timeRemainingDivHeight);
-  rect(totalTimeDivX, totalTimeDivY, totalTimeDivWidth, totalTimeDivHeight);
-  //
-  //rect(timeBarDivX, timeBarDivY, timeBarDivWidth, timeBarDivHeight);
-  rect(stopButtonX, stopButtonY, stopButtonWidth, stopButtonHeight);
-  triangle(playX1, playY1, playX2, playY2, playX3, playY3);
-  triangle(fastForwardX1, fastForwardY1, fastForwardX2, fastForwardY2, fastForwardX3, fastForwardY3);
-  triangle(fastForwardX4, fastForwardY4, fastForwardX5, fastForwardY5, fastForwardX6, fastForwardY6);
-  rect(pauseX1, pauseY1, pauseWidth1, pauseHeight1);
-  rect(pauseX2, pauseY2, pauseWidth2, pauseHeight2);
-  //
-  //Font Size relative to rect(height)
-  float fontSize = 52; //Change the number until it fits, largest font size, int only to ease guessing
-  //println("Font Size:", fontSize );
-  //
-  /* Aspect Ratio Manipulations (changes to variables)
-   - choose Aspect Ratio that must be mutliplied: fontSize/titleHeight
-   - Rewriting fontSize with formulae
-   */
+  float fontSize = 52;
   float harringtonAspectRatio = fontSize / songTitleDivHeight;
   fontSize = songTitleDivHeight*harringtonAspectRatio;
-  //println("Aspect Ratio:", harringtonAspectRatio);
-  //println(); //Skip a line
   //
-  //Minimum Lines of code to format and draw text with colour
-  color purpleInk = #2C08FF;
-  fill(purpleInk); //Ink, hexidecimal copied from Color Selector
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  textFont(appFont, fontSize); //see variable note
-  //textFont() has option to combine font declaration with textSize()
+  color PinkBlossom = #F7B9D4;
+  fill(PinkBlossom);
+  textAlign (CENTER, CENTER);
+  textFont(appFont, fontSize);
   //
   //Drawing Text
-  //Option draw ```title```
-  //Decrease Font when wrapped around
   while ( songTitleDivWidth < textWidth( playListMetaData[currentSong].title() ) ) { //decrease font
-    //exit();
-    //println("here"); //infinte loop, problem with WHILE, similar to draw()
-    //Nothing Else works
-    //
-    fontSize *= 0.99; //Assignment Operator  //fontSize = fontSize*0.99;
-    //Update WHILE Conditional with fontSize
+    fontSize *= 0.99;
     textFont(appFont, fontSize);
-  } //End Wrap-Around Notification
-  //
-  //Option, drawing ```title``` v playListMetaData[currentSong].title()
+  }
   text(playListMetaData[currentSong].title(), songTitleDivX, songTitleDivY, songTitleDivWidth, songTitleDivHeight);
-  color whiteInk = #FFFFFF;
-  fill(whiteInk); //reset
+  color White = #FFFFFF;
+  fill(White); //reset
   //
-  //Aspect Ratio of Specfic Font, calculations only to be entered in variables above
-  //println( "Text Width:", textWidth( playListMetaData[currentSong].title() ), "v rectWidth:", songTitleDivWidth ); //Always smaller or cut off, if text is drawn, always drawn
-  //println( "Text Height:", fontSize, "v. rectHeight:", songTitleDivHeight ); //largest fontSize that will be draw, relative to rectHeight
-  //println( "Harrington Aspect Ratio ( fontSize/rect(height) ):", fontSize/songTitleDivHeight ); //Remember casting
-  //
-  //Print What is available on a particular song
-  //See Image / Properties / Details
   println();
   println( "File Name: " + playListMetaData[currentSong].fileName() );
   println( "Length (in milliseconds): " + playListMetaData[currentSong].length() );
