@@ -63,7 +63,7 @@ void setup() {
   fullScreen(700, 500);
   int appWidth = displayWidth;
   int appHeight = displayHeight;
-  int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
+  //int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
   //
   minim = new Minim(this);
   String LessonPrototypingFolder = "Lesson Prototyping/";
@@ -215,6 +215,7 @@ void setup() {
   appFont = createFont ("Times New Roman Bold", fontSize); 
   //
   //Population
+  /*
   quitX = appWidth - appShortSide*1/20;
   quitY = 0;
   quitWidth = appShortSide*1/20;
@@ -341,10 +342,11 @@ void setup() {
   timeBarDivY = musicSongSpaceY + musicSongSpaceHeight*2/5;
   timeBarDivWidth = musicSongSpaceWidth;
   timeBarDivHeight = musicSongSpaceHeight*1/5;
+  */
   //
   float fontSize = 52;
-  float harringtonAspectRatio = fontSize / songTitleDivHeight;
-  fontSize = songTitleDivHeight*harringtonAspectRatio;
+  float TimesNewRomanAspectRatio = fontSize / SongTitleButtonHeight;
+  fontSize = SongTitleButtonHeight*TimesNewRomanAspectRatio;
   //
   color PinkBlossom = #F7B9D4;
   fill(PinkBlossom);
@@ -352,11 +354,11 @@ void setup() {
   textFont(appFont, fontSize);
   //
   //Drawing Text
-  while ( songTitleDivWidth < textWidth( playListMetaData[currentSong].title() ) ) { //decrease font
+  while ( SongTitleButtonWidth < textWidth( playListMetaData[currentSong].title() ) ) { //decrease font
     fontSize *= 0.99;
     textFont(appFont, fontSize);
   }
-  text(playListMetaData[currentSong].title(), songTitleDivX, songTitleDivY, songTitleDivWidth, songTitleDivHeight);
+  text(playListMetaData[currentSong].title(), SongTitleButtonX, SongTitleButtonY, SongTitleButtonWidth, SongTitleButtonHeight);
   color White = #FFFFFF;
   fill(White); //reset
   //
@@ -505,4 +507,4 @@ void keyPressed() {
   //
 } //End keyPressed
 //
-// End Main Program
+//End Main Program
