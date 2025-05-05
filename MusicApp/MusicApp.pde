@@ -60,18 +60,17 @@ PFont appFont;
 float fontSize;
 //
 void setup() {
-  fullScreen(700, 500);
-  int appWidth = displayWidth;
-  int appHeight = displayHeight;
+  size(700, 500);
+  int appWidth = width;
+  int appHeight = height;
   //int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
   //
   minim = new Minim(this);
-  String LessonPrototypingFolder = "Lesson Prototyping/";
   String MusicAll = "Music/";
   String CloseToYou = "Close To You - Frank Ocean";
   String Math = "Math - Frank Ocean";
   String Nights = "Nights - Frank Ocean";
-  String RocketLove = "Rocket Love - Frank Ocean ";
+  String RocketLove = "Rocket Love - Frank Ocean";
   String SelfControl = "Self Control - Frank Ocean";
   String SongsForWomen = "Songs for Women - Frank Ocean";
   //
@@ -173,7 +172,7 @@ void setup() {
   rect(FastForwardX, FastForwardY, FastForwardWidth, FastForwardHeight);
   //
   String fileExtension_mp3 = ".mp3";
-  String musicDirectory = "../" + LessonPrototypingFolder + MusicAll; 
+  String musicDirectory = "../" + MusicAll; 
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
   currentSong=0;
@@ -426,11 +425,12 @@ void keyPressed() {
    */
   //if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
   //
-  if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible
+  // if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
    Symbol is two triangles
    This changes what the button might become after it is pressed
-   */
+   
+   /*
   if ( key=='O' || key=='o' ) { // Pause
     //
     if ( playList[currentSong].isPlaying() ) {
@@ -500,11 +500,11 @@ void keyPressed() {
   //Note: will randomize the currentSong number
   //Caution: random() is used very often
   //Question: how does truncating decimals affect returning random() floats
-  /*
+  
   if ( key=='' || key=='' ) ; // Play-Pause-STOP //Advanced, beyond single buttons
    - need to have basic GUI complete first
    */
   //
 } //End keyPressed
 //
-//End Main Program
+// End Main Program
