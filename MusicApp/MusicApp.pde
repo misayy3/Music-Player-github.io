@@ -82,6 +82,10 @@ void setup() {
   String file4 = musicDirectory + SelfControl + fileExtension_mp3;
   String file5 = musicDirectory + SongsForWomen + fileExtension_mp3;
   //
+  playList[ currentSong ] = minim.loadFile( file );
+  playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
+  playList[currentSong].play();
+  //
   QuitX = appWidth * 0.9375;
   QuitY = appHeight * 0.0;
   QuitWidth = appWidth * 0.12;
@@ -219,7 +223,7 @@ void setup() {
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   playList[ currentSong ].play();
   //
-  currentSong=0;
+  //currentSong=0;
   //
   appFont = createFont ("Times New Roman Bold", fontSize); 
   //
