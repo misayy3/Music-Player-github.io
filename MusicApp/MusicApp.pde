@@ -67,24 +67,49 @@ void setup() {
   //
   minim = new Minim(this);
   String musicPathway = "Music/";
-  String CloseToYou = "Close To You - Frank Ocean";
-  String Math = "Math - Frank Ocean";
-  String Nights = "Nights - Frank Ocean";
-  String RocketLove = "Rocket Love - Frank Ocean";
-  String SelfControl = "Self Control - Frank Ocean";
-  String SongsForWomen = "Songs for Women - Frank Ocean";
+  String CloseToYou = "Close To You";
+  String Math = "Math";
+  String Nights = "Nights";
+  String RocketLove = "Rocket Love";
+  String SelfControl = "Self Control";
+  String SongsForWomen = "Songs for Women";
   String fileExtension_mp3 = ".mp3";
-  String musicDirectory = "../../../" + musicPathway; 
+  String musicDirectory = "../../../" + musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
-  String file1 = musicDirectory + Math + fileExtension_mp3;
-  String file2 = musicDirectory + Nights + fileExtension_mp3;
-  String file3 = musicDirectory + RocketLove + fileExtension_mp3;
-  String file4 = musicDirectory + SelfControl + fileExtension_mp3;
-  String file5 = musicDirectory + SongsForWomen + fileExtension_mp3;
   //
+  currentSong=0;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
-  playList[currentSong].play();
+  //
+  currentSong++;
+  file = musicDirectory + CloseToYou + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file );
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  currentSong++;
+  file = musicDirectory + Math + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file ); 
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  currentSong++;
+  file = musicDirectory + Nights + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file ); 
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  currentSong++;
+  file = musicDirectory + RocketLove + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file ); 
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  currentSong++;
+  file = musicDirectory + SelfControl + fileExtension_mp3; 
+  playList[ currentSong ] = minim.loadFile( file ); 
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  currentSong++;
+  file = musicDirectory + SongsForWomen + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file );
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   QuitX = appWidth * 0.9375;
   QuitY = appHeight * 0.0;
@@ -182,48 +207,6 @@ void setup() {
   rect(NextX, NextY, NextWidth, NextHeight);
   rect(ShuffleX, ShuffleY, ShuffleWidth, ShuffleHeight);
   rect(FastForwardX, FastForwardY, FastForwardWidth, FastForwardHeight);
-  //
-  currentSong=0;
-  playList[ currentSong ] = minim.loadFile( file ); 
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  //
-  currentSong++;
-  file = musicDirectory + CloseToYou + fileExtension_mp3; 
-  playList[ currentSong ] = minim.loadFile( file );
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  currentSong++;
-  file = musicDirectory + Math + fileExtension_mp3;
-  playList[ currentSong ] = minim.loadFile( file1 ); 
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  currentSong++;
-  file = musicDirectory + Nights + fileExtension_mp3; 
-  playList[ currentSong ] = minim.loadFile( file2 ); 
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  currentSong++;
-  file = musicDirectory + RocketLove + fileExtension_mp3;
-  playList[ currentSong ] = minim.loadFile( file3 ); 
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  currentSong++;
-  file = musicDirectory + SelfControl + fileExtension_mp3; 
-  playList[ currentSong ] = minim.loadFile( file4 ); 
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  currentSong++;
-  file = musicDirectory + SongsForWomen + fileExtension_mp3;
-  playList[ currentSong ] = minim.loadFile( file5 );
-  playListMetaData[currentSong] = playList[currentSong].getMetaData();
-  playList[ currentSong ].play();
-  //
-  //currentSong=0;
   //
   appFont = createFont ("Times New Roman Bold", fontSize); 
   //
