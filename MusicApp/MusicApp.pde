@@ -77,7 +77,7 @@ void setup() {
   String musicDirectory = "../../../" + musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
-  currentSong=0;
+  currentSong = 0;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
   //
