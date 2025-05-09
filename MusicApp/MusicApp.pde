@@ -74,7 +74,7 @@ void setup() {
   String SelfControl = "Self Control";
   String SongsForWomen = "Songs for Women";
   String fileExtension_mp3 = ".mp3";
-  String musicDirectory = "../../../" + musicPathway;
+  String musicDirectory = musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
   currentSong=0;
