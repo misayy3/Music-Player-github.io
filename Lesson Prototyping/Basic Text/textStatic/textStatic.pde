@@ -27,7 +27,7 @@ int shorterSide = ( appWidth >= appHeight ) ? appHeight : appWidth ; //Landscape
 //
 minim = new Minim(this);
 String musicPathway = "Music/";
-String song = "Rocket Love - Frank Ocean";
+String song = "Rocket Love";
 String fileExtension_mp3 = ".mp3";
 String musicDirectory = "../../../" + musicPathway;
 String file = musicDirectory + song + fileExtension_mp3;
@@ -35,16 +35,9 @@ println( file );
 playList[ currentSong ] = minim.loadFile( file );
 playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
 playList[currentSong].play();
-
-/*Fonts from OS
-println ("Start of Console");
-String[] fontList = PFont.list(); 
-printArray(fontList); 
-*/
+//
 fontSize = shorterSide;
 appFont = createFont("Times New Roman Bold", fontSize);
-//Tools / Create Font / Find Font / Do Not Press "OK", known bug (not loadFont() )
-//
 //Population
 TitleX = appWidth * 1/4;
 TitleY = appHeight * 1/4;
