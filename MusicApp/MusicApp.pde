@@ -124,7 +124,7 @@ void setup() {
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
-  //Div Numbers
+  //Rectangle Numbers
   //
   QuitX = appWidth * 0.9375;
   QuitY = appHeight * 0.0;
