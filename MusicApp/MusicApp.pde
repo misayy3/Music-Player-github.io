@@ -1,4 +1,5 @@
 //Library - Minim
+//
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -7,6 +8,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
+//
 Minim minim;
 int numberOfSongs = 6;
 AudioPlayer[] playList = new AudioPlayer[ numberOfSongs ];
@@ -56,14 +58,23 @@ float NextButtonX, NextButtonY, NextButtonWidth, NextButtonHeight;
 float ShuffleButtonX, ShuffleButtonY, ShuffleButtonWidth, ShuffleButtonHeight;
 float FastForwardButtonX, FastForwardButtonY, FastForwardButtonWidth, FastForwardButtonHeight;
 //
+//Image Variables
+//
+PImage myFirstImage, mySecondImage;
+float imageWidthChanged_First, imageHeightChanged_First;
+float imageWidthChanged_Second, imageHeightChanged_Second;
+//
 PFont appFont;
 float fontSize;
 //
 void setup() {
-  size(700, 500);
-  int appWidth = width;
-  int appHeight = height;
+  fullScreen(); //displayWidth, displayHeight
+  int appWidth = displayWidth;
+  int appHeight = displayHeight;
+  //
   //int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
+  //
+  //Music Loading
   //
   minim = new Minim(this);
   String musicPathway = "Music/";
@@ -76,10 +87,12 @@ void setup() {
   String fileExtension_mp3 = ".mp3";
   String musicDirectory = "../../../" + musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
+  println( file );
   //
   currentSong = 0;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
+  playList[ currentSong ].play();
   //
   currentSong++;
   file = musicDirectory + CloseToYou + fileExtension_mp3; 
@@ -110,6 +123,8 @@ void setup() {
   file = musicDirectory + SongsForWomen + fileExtension_mp3;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  //
+  //Div Numbers
   //
   QuitX = appWidth * 0.9375;
   QuitY = appHeight * 0.0;
@@ -208,7 +223,13 @@ void setup() {
   rect(ShuffleX, ShuffleY, ShuffleWidth, ShuffleHeight);
   rect(FastForwardX, FastForwardY, FastForwardWidth, FastForwardHeight);
   //
+  //Title Text
+  //
   appFont = createFont ("Times New Roman Bold", fontSize); 
+  SongTitleX = appWidth * 0.50;
+  SongTitleY = appHeight * 0.25;
+  SongTitleWidth = appWidth * 0.1875;
+  SongTitleHeight = appHeight * 0.09375;
   //
   //Population
   /*
@@ -340,6 +361,7 @@ void setup() {
   timeBarDivHeight = musicSongSpaceHeight*1/5;
   */
   //
+  /*
   float fontSize = 52;
   float TimesNewRomanAspectRatio = fontSize / SongTitleButtonHeight;
   fontSize = SongTitleButtonHeight*TimesNewRomanAspectRatio;
@@ -375,6 +397,7 @@ void setup() {
   println( "Orchestra: " + playListMetaData[currentSong].orchestra() );
   println( "Publisher: " + playListMetaData[currentSong].publisher() );
   println( "Encoded: " + playListMetaData[currentSong].encoded() );
+  */
   //
 } //End setup
 //
