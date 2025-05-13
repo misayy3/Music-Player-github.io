@@ -16,6 +16,7 @@ AudioMetaData[] playListMetaData = new AudioMetaData[ numberOfSongs ];
 int currentSong = numberOfSongs - numberOfSongs; //ZERO
 //
 //DIV Variables
+//
 float QuitX, QuitY, QuitWidth, QuitHeight;
 float SongImageX, SongImageY, SongImageWidth, SongImageHeight;
 float SongTitleX, SongTitleY, SongTitleWidth, SongTitleHeight;
@@ -71,7 +72,7 @@ void setup() {
   fullScreen(); //displayWidth, displayHeight
   int appWidth = displayWidth;
   int appHeight = displayHeight;
-  //
+  background(#FFD8E7);
   //int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
   //
   //Music Loading
@@ -85,13 +86,12 @@ void setup() {
   String SelfControl = "Self Control";
   String SongsForWomen = "Songs for Women";
   String fileExtension_mp3 = ".mp3";
-  String musicDirectory = "../../" + musicPathway;
+  String musicDirectory = "../../../" + musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
-  currentSong = 0;
+  currentSong=0;
   playList[ currentSong ] = minim.loadFile( file );
-  playListMetaData[ currentSong ] = playList[ currentSong ].getMetaData();
-  playList[ currentSong ].play();
+  playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
   file = musicDirectory + CloseToYou + fileExtension_mp3; 
@@ -100,22 +100,22 @@ void setup() {
   //
   currentSong++;
   file = musicDirectory + Math + fileExtension_mp3;
-  playList[ currentSong ] = minim.loadFile( file ); 
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + Nights + fileExtension_mp3; 
-  playList[ currentSong ] = minim.loadFile( file ); 
+  file = musicDirectory + Nights + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
   file = musicDirectory + RocketLove + fileExtension_mp3;
-  playList[ currentSong ] = minim.loadFile( file ); 
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
-  file = musicDirectory + SelfControl + fileExtension_mp3; 
-  playList[ currentSong ] = minim.loadFile( file ); 
+  file = musicDirectory + SelfControl + fileExtension_mp3;
+  playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
   //
   currentSong++;
@@ -379,6 +379,7 @@ void setup() {
   color White = #FFFFFF;
   fill(White); //reset
   //
+  /*
   println();
   println( "File Name: " + playListMetaData[currentSong].fileName() );
   println( "Length (in milliseconds): " + playListMetaData[currentSong].length() );
@@ -396,8 +397,8 @@ void setup() {
   println( "Orchestra: " + playListMetaData[currentSong].orchestra() );
   println( "Publisher: " + playListMetaData[currentSong].publisher() );
   println( "Encoded: " + playListMetaData[currentSong].encoded() );
-  */
   //
+  */
 } //End setup
 //
 void draw() {
@@ -407,12 +408,7 @@ void mousePressed() {
 } //End mousePressed
 //
 void keyPressed() {
-  /* Key Board Short Cuts ... learning what the Music Buttons could be
-   Note: CAP Lock with ||
-   if ( key==? || key==? ) ; //'' only
-   -
-   if ( key==CODED || keyCode==SpecialKey ) ; //Special Keys abriviated CAPS
-   All Music Player Features are built out of these Minim AudioPlayer() functions
+  /*
    .isPlaying()
    .isMuted()
    .loop(0), parameter is number of iterations after play
@@ -441,21 +437,17 @@ void keyPressed() {
    - Play-Pause-Stop
    - Auto Play
    - Random Song
-   */
-  //if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
+   //
+  if ( key=='P' || key=='p' ) playList[currentSong].play(); //Simple Play, no double tap possible
   //
-  // if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible
-  /* Note: double tap is automatic rewind, no pause
-   Symbol is two triangles
-   This changes what the button might become after it is pressed
-   
-   /*
+  //if ( key=='P' || key=='p' ) playList[currentSong].loop(0); //Simple Play, double tap possible   
+ 
   if ( key=='O' || key=='o' ) { // Pause
     //
-    if ( playList[currentSong].isPlaying() ) {
-      playList[currentSong].pause();
+    if ( playList[ currentSong ].isPlaying() ) {
+      playList[ currentSong ].pause();
     } else {
-      playList[currentSong].play();
+      playList[ currentSong ].play();
     }
   }
   //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
@@ -527,3 +519,48 @@ void keyPressed() {
 } //End keyPressed
 //
 // End Main Program
+//Library - Minim
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+//Global Variables
+Minim minim;
+int numberOfSongs = 6;
+AudioPlayer[] playList = new AudioPlayer[numberOfSongs];
+AudioMetaData[] playListMetaData = new AudioMetaData[numberOfSongs];
+int currentSong = 0; // Start from ZERO
+
+void setup() {
+  fullScreen(); // Display to full screen
+  background(#FFD8E7);
+
+  // Music Loading
+  minim = new Minim(this);
+
+  // Music metadata and paths
+  String musicPathway = "Music/";
+  String[] songTitles = {
+    "Close To You",
+    "Math",
+    "Nights",
+    "Rocket Love",
+    "Self Control",
+    "Songs for Women"
+  };
+  String fileExtension_mp3 = ".mp3";
+  String musicDirectory = "../../../" + musicPathway;
+
+  // Load songs into playlist
+  for (int i = 0; i < numberOfSongs; i++) {
+    String file = musicDirectory + songTitles[i] + fileExtension_mp3;
+    playList[i] = minim.loadFile(file);
+    playListMetaData[i] = playList[i].getMetaData();
+  }
+
+  // Start playing the first song
+  playList[currentSong].play();
+}
