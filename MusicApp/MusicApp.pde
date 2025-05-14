@@ -231,11 +231,11 @@ void setup() {
   SongTitleHeight = appHeight * 0.09375;
   //
   //Population
-  QuitX = appWidth - appShortSide*1/20;
-  QuitY = 0;
-  QuitWidth = appShortSide*1/20;
-  QuitHeight = appShortSide*1/20;
   /*
+  QuitButtonX = appWidth - appShortSide*1/20;
+  QuitButtonY = 0;
+  QuitButtonWidth = appShortSide*1/20;
+  QuitHeight = appShortSide*1/20;
   imageDivX = appWidth*1/4;
   imageDivY = appHeight*1/5;
   imageDivWidth = appWidth*1/2;
