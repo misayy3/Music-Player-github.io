@@ -73,7 +73,7 @@ void setup() {
   int appWidth = displayWidth;
   int appHeight = displayHeight;
   background(#FFD8E7);
-  //int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
+  int appShortSide = ( appWidth < appHeight ) ? appWidth : appHeight ;
   //
   //Music Loading
   //
@@ -224,18 +224,18 @@ void setup() {
   //
   //Title Text
   //
-  appFont = createFont ("Times New Roman Bold", fontSize); 
+  appFont = createFont ("Times New Roman Bold", appShortSide); 
   SongTitleX = appWidth * 0.50;
   SongTitleY = appHeight * 0.25;
   SongTitleWidth = appWidth * 0.1875;
   SongTitleHeight = appHeight * 0.09375;
   //
   //Population
+  QuitX = appWidth - appShortSide*1/20;
+  QuitY = 0;
+  QuitWidth = appShortSide*1/20;
+  QuitHeight = appShortSide*1/20;
   /*
-  quitX = appWidth - appShortSide*1/20;
-  quitY = 0;
-  quitWidth = appShortSide*1/20;
-  quitHeight = appShortSide*1/20;
   imageDivX = appWidth*1/4;
   imageDivY = appHeight*1/5;
   imageDivWidth = appWidth*1/2;
