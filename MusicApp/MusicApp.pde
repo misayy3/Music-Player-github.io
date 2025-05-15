@@ -89,6 +89,7 @@ void setup() {
   String musicDirectory = "../../../" + musicPathway;
   String file = musicDirectory + CloseToYou + fileExtension_mp3;
   //
+  /*
   currentSong=0;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
@@ -122,6 +123,7 @@ void setup() {
   file = musicDirectory + SongsForWomen + fileExtension_mp3;
   playList[ currentSong ] = minim.loadFile( file );
   playListMetaData[currentSong] = playList[currentSong].getMetaData();
+  */
   //
   //Rectangle Numbers
   //
@@ -245,39 +247,58 @@ void setup() {
   songTitleDivWidth = appWidth*1/2;
   songTitleDivHeight = appHeight*1/10;
   //
-  int numberOfButtons = 13; 
+  */
+  int numberOfButtons = 11; 
   int widthOfButton = appWidth/numberOfButtons;
   int beginningButtonSpace = widthOfButton;
   int buttonY = appHeight*3/5;
-  stopDivX = beginningButtonSpace + widthOfButton*0;
-  stopDivY = buttonY;
-  stopDivWidth = widthOfButton;
-  stopDivHeight = widthOfButton;
+  StopButtonX = beginningButtonSpace + widthOfButton*0;
+  StopButtonY = buttonY;
+  StopButtonWidth = widthOfButton;
+  StopButtonHeight = widthOfButton;
   //
   //STOP BUTTON
-  stopButtonX = stopDivX + stopDivWidth*1/4;
-  stopButtonY = stopDivY + stopDivHeight*1/4;
-  stopButtonWidth = widthOfButton*1/2;
-  stopButtonHeight = widthOfButton*1/2;
+  StopButtonX = StopButtonX + StopButtonWidth*1/4;
+  StopButtonY = StopButtonY + StopButtonHeight*1/4;
+  StopButtonWidth = widthOfButton*1/2;
+  StopButtonHeight = widthOfButton*1/2;
   //
-  muteDivX = beginningButtonSpace + widthOfButton*1;
-  muteDivY = buttonY;
-  muteDivWidth = widthOfButton;
-  muteDivHeight = widthOfButton;
-  previousDivX = beginningButtonSpace + widthOfButton*2;
-  previousDivY = buttonY;
-  previousDivWidth = widthOfButton;
-  previousDivHeight = widthOfButton;
-  fastRewindDivX = beginningButtonSpace + widthOfButton*3;
-  fastRewindDivY = buttonY;
-  fastRewindDivWidth = widthOfButton;
-  fastRewindDivHeight = widthOfButton;
-  pauseDivX = beginningButtonSpace + widthOfButton*4;
-  pauseDivY = buttonY;
-  pauseDivWidth = widthOfButton;
-  pauseDivHeight = widthOfButton;
+  //Play Button
+  //
+  noStroke();
+  fill(#FC9CC2);
+  float padding = 0.27;
+  float triangleWidth = StopWidth * (1 - padding * 2);
+  float triangleHeight = StopHeight * (1 - padding * 1);
+  float centerX = StopX + StopWidth / 2;
+  float centerY = StopY + StopHeight / 2;
+  float x1 = centerX - triangleWidth / 2.5; // Left point of the triangle
+  float y1 = centerY - triangleHeight / 2;
+  float x2 = x1; // Bottom-left point of the triangle
+  float y2 = centerY + triangleHeight / 2;
+  float x3 = centerX + triangleWidth / 2; // Right point of the triangle
+  float y3 = centerY;
+  triangle(x1, y1, x2, y2, x3, y3); // Draw the triangle
+  //
+  MuteButtonX = beginningButtonSpace + widthOfButton*1;
+  MuteButtonY = buttonY;
+  MuteButtonWidth = widthOfButton;
+  MuteButtonHeight = widthOfButton;
+  PreviousButtonX = beginningButtonSpace + widthOfButton*2;
+  PreviousButtonY = buttonY;
+  PreviousButtonWidth = widthOfButton;
+  PreviousButtonHeight = widthOfButton;
+  FastReverseButtonX = beginningButtonSpace + widthOfButton*3;
+  FastReverseButtonY = buttonY;
+  FastReverseButtonWidth = widthOfButton;
+  FastReverseButtonHeight = widthOfButton;
+  PauseButtonX = beginningButtonSpace + widthOfButton*4;
+  PauseButtonY = buttonY;
+  PauseButtonWidth = widthOfButton;
+  PauseButtonHeight = widthOfButton;
   //
   //Pause Button
+  /*
   pauseX1 = pauseDivX + pauseDivWidth*1/4;
   pauseY1 = pauseDivY + pauseDivHeight*1/4;
   pauseWidth1 = pauseDivWidth*1/8;
@@ -335,6 +356,7 @@ void setup() {
   shuffleDivY = buttonY;
   shuffleDivWidth = widthOfButton;
   shuffleDivHeight = widthOfButton;
+  /*
   //
   float musicSongPaddingY = widthOfButton*1/4;
   float musicSongSpaceX = stopDivX;
