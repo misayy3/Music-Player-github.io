@@ -65,6 +65,8 @@ PImage myFirstImage, mySecondImage;
 float imageWidthChanged_First, imageHeightChanged_First;
 float imageWidthChanged_Second, imageHeightChanged_Second;
 //
+float paddingsmall = 0.21;
+float paddingbig = 0.29;
 PFont appFont;
 float fontSize;
 //
@@ -129,7 +131,7 @@ void setup() {
   //
   QuitX = appWidth * 0.9375;
   QuitY = appHeight * 0.0;
-  QuitWidth = appWidth * 0.12;
+  QuitWidth = appWidth * 0.0625;
   QuitHeight = appHeight * 0.12;
   SongImageX = appWidth * 0.0625;
   SongImageY = appHeight * 0.1875;
@@ -144,7 +146,7 @@ void setup() {
   SongArtistWidth = appWidth * 0.125;
   SongArtistHeight = appHeight * 0.0625;
   TimeBarX = appWidth * 0.50;
-  TimeBarY = appHeight * 0.4375;
+  TimeBarY = appHeight * 0.4453125;
   TimeBarWidth = appWidth * 0.453125;
   TimeBarHeight = appHeight * 0.0325;
   PositionOfTheSongX = appWidth * 0.50;
@@ -241,64 +243,12 @@ void setup() {
   float FastForwardY = appHeight * 0.5625;
   float FastForwardWidth = appWidth * 0.03125;
   float FastForwardHeight = appHeight * 0.046875;
-
   // Fast Reverse Button
+  /*
   float FastReverseX = appWidth * 0.50;
   float FastReverseY = appHeight * 0.5625;
   float FastReverseWidth = appWidth * 0.03125;
   float FastReverseHeight = appHeight * 0.046875;
-
-  // Padding as a percentage of width/height
-  float padding = 0.2;
-  noStroke();
-
-  // --- Fast Forward Button ---
-  drawDoubleTriangle(
-    FastForwardX, FastForwardY, FastForwardWidth, FastForwardHeight,
-    false, // not reversed
-    #FC9CC2,
-    padding
-  );
-
-  // --- Fast Reverse Button ---
-  drawDoubleTriangle(
-    FastReverseX, FastReverseY, FastReverseWidth, FastReverseHeight,
-    true, // reversed
-    #FC9CC2,
-    padding
-  );
-}
-
-// Helper function to draw double triangles (fast forward/rewind)
-void drawDoubleTriangle(float x, float y, float w, float h, boolean reversed, color c, float paddingRatio) {
-  float innerPaddingX = w * paddingRatio;
-  float innerPaddingY = h * paddingRatio;
-
-  float triW = (w - 2 * innerPaddingX) / 2;
-  float triH = h - 2 * innerPaddingY;
-
-  // First triangle (left for ff, right for rewind)
-  float left = x + innerPaddingX;
-  float right = left + triW + innerPaddingX;
-  float top = y + innerPaddingY;
-  float bottom = top + triH;
-  float centerY = y + h / 2;
-
-  fill(c);
-
-  if (!reversed) {
-    // Fast Forward: two right-pointing triangles
-    // First triangle (left)
-    triangle(left, top, left, bottom, left + triW, centerY);
-    // Second triangle (right)
-    triangle(right, top, right, bottom, right + triW, centerY);
-  } else {
-    // Fast Rewind: two left-pointing triangles
-    // First triangle (left)
-    triangle(left + triW, top, left + triW, bottom, left, centerY);
-    // Second triangle (right)
-    triangle(right + triW, top, right + triW, bottom, right, centerY);
-  }
   /*
   QuitButtonX = appWidth - appShortSide*1/20;
   QuitButtonY = 0;
@@ -332,9 +282,8 @@ void drawDoubleTriangle(float x, float y, float w, float h, boolean reversed, co
   StopButtonHeight = widthOfButton*1/2;
   //
   */
-  float paddingRatio = 0.21; // 25% padding on each side
-  float availableWidth = StopWidth * (1 - 2 * paddingRatio);
-  float availableHeight = StopHeight * (1 - 2 * paddingRatio);
+  float availableWidth = StopWidth * (1 - 2 * paddingsmall);
+  float availableHeight = StopHeight * (1 - 2 * paddingsmall);
   float squareSize = min(availableWidth, availableHeight);
   float squareX = StopX + (StopWidth - squareSize) / 2;
   float squareY = StopY + (StopHeight - squareSize) / 2;
@@ -349,18 +298,18 @@ void drawDoubleTriangle(float x, float y, float w, float h, boolean reversed, co
   rect(PlayX, PlayY, PlayWidth, PlayHeight);
   noStroke();
   fill(#FC9CC2);
-  float padding = 0.27;
+  float padding = 0.29;
   float triangleWidth = PlayWidth * (1 - padding * 2);
   float triangleHeight = PlayHeight * (1 - padding * 1);
   float centerX = PlayX + PlayWidth / 2;
   float centerY = PlayY + PlayHeight / 2;
-  float x1 = centerX - triangleWidth / 2.5; // Left point of the triangle
-  float y1 = centerY - triangleHeight / 2;
-  float x2 = x1; // Bottom-left point of the triangle
-  float y2 = centerY + triangleHeight / 2;
-  float x3 = centerX + triangleWidth / 2; // Right point of the triangle
-  float y3 = centerY;
-  triangle(x1, y1, x2, y2, x3, y3); // Draw the triangle
+  float playx1 = centerX - triangleWidth / 2.5; // Left point of the triangle
+  float playy1 = centerY - triangleHeight / 2;
+  float playx2 = playx1; // Bottom-left point of the triangle
+  float playy2 = centerY + triangleHeight / 2;
+  float playx3 = centerX + triangleWidth / 2; // Right point of the triangle
+  float playy3 = centerY;
+  triangle(playx1, playy1, playx2, playy2, playx3, playy3); // Draw the triangle
   //
   /*
   MuteButtonX = beginningButtonSpace + widthOfButton*1;
@@ -376,11 +325,11 @@ void drawDoubleTriangle(float x, float y, float w, float h, boolean reversed, co
   FastReverseButtonWidth = widthOfButton;
   FastReverseButtonHeight = widthOfButton;
   //
+  */
   //Pause Button
   //
-  float opaddingRatio = 0.21;
-  float aavailableWidth = PauseWidth * (1 - 2 * opaddingRatio);
-  float aavailableHeight = PauseHeight * (1 - 2 * opaddingRatio);
+  float aavailableWidth = PauseWidth * (1 - 2 * paddingsmall);
+  float aavailableHeight = PauseHeight * (1 - 2 * paddingsmall);
   float barWidth = aavailableWidth / 3.0; // two bars, 1 barWidth gap in-between
   float barHeight = aavailableHeight;
   float ccenterX = PauseX + PauseWidth / 2;
