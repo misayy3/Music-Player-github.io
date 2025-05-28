@@ -239,11 +239,25 @@ void setup() {
   //Quit Button
   //
   // Fast Forward Button
-  float FastForwardX = appWidth * 0.921875;
-  float FastForwardY = appHeight * 0.5625;
-  float FastForwardWidth = appWidth * 0.03125;
-  float FastForwardHeight = appHeight * 0.046875;
+  //
   // Fast Reverse Button
+  //
+  fill(#FC9CC2);
+  noStroke();
+  float margin = FastReverseWidth * 0.13;
+  float triWidth = (FastReverseWidth - 3 * margin) / 2.0;
+  //Left Triangle (Fast Reverse)
+  float x1 = FastReverseX + FastReverseWidth * 0.14;
+  float y1 = FastReverseY + FastReverseHeight / 2;
+  float x2 = x1 + triWidth;
+  float y2top = FastReverseY + margin;
+  float y2bottom = FastReverseY + FastReverseHeight - margin;
+  triangle(x1, y1, x2, y2top, x2, y2bottom);
+  //Right Triangle (Fast Reverse)
+  float x3 = x2 + FastReverseWidth * 0.07;
+  float x4 = x3 + triWidth;
+  triangle(x3, y1, x4, y2top, x4, y2bottom);
+  //
   /*
   float FastReverseX = appWidth * 0.50;
   float FastReverseY = appHeight * 0.5625;
@@ -269,19 +283,8 @@ void setup() {
   //int beginningButtonSpace = widthOfButton;
   //int buttonY = appHeight*3/5;
   //
-  /*
-  StopButtonX = beginningButtonSpace + widthOfButton*0;
-  StopButtonY = buttonY;
-  StopButtonWidth = widthOfButton;
-  StopButtonHeight = widthOfButton;
+  //Stop Button
   //
-  //STOP BUTTON
-  StopButtonX = StopButtonX + StopButtonWidth*1/4;
-  StopButtonY = StopButtonY + StopButtonHeight*1/4;
-  StopButtonWidth = widthOfButton*1/2;
-  StopButtonHeight = widthOfButton*1/2;
-  //
-  */
   float availableWidth = StopWidth * (1 - 2 * paddingsmall);
   float availableHeight = StopHeight * (1 - 2 * paddingsmall);
   float squareSize = min(availableWidth, availableHeight);
@@ -341,9 +344,6 @@ void setup() {
   fill(#FC9CC2); // Blue color, change as desired
   rect(leftBarX, barY, barWidth, barHeight, barWidth / 100);
   rect(rightBarX, barY, barWidth, barHeight, barWidth / 100);
-  //
-  //Pause Button
-  //
   //
   //Mute Button
   //
