@@ -238,31 +238,64 @@ void setup() {
   //
   //Quit Button
   //
+  float QX = appWidth * 0.9375;
+  float QY = appHeight * 0.0;
+  float QWidth = appWidth * 0.0625;
+  float QHeight = appHeight * 0.12;
+  pushStyle(); // Save current style settings
+  float QMargin = QWidth * 0.22; // Margin so the X doesn't touch the edge
+  float QX1_start = QX + QMargin;
+  float QX1_end = QX + QWidth - QMargin;
+  float QY1_start = QY + QMargin;
+  float QY1_end = QY + QHeight - QMargin;
+  stroke(#FC9CC2);
+  strokeWeight(QWidth * 0.10); // Thicker for blocky look
+  strokeCap(SQUARE);
+  noFill();
+  // First diagonal
+  line(QX1_start, QY1_start, QX1_end, QY1_end);
+  // Second diagonal
+  line(QX1_start, QY1_end, QX1_end, QY1_start);
+  popStyle(); // Restore previous style settings
+  //
   // Fast Forward Button
+  //
+  fill(#FC9CC2);
+  noStroke();
+  float FFsideMargin = FastForwardWidth * 0.13;
+  float FFtriWidth = (FastForwardWidth - 2 * FFsideMargin) / 2.0; // Only 2 margins, one on each sid
+  // Vertically centered
+  float FFcenterY = FastForwardY + FastForwardHeight / 2;
+  float FFyTop = FastForwardY + FFsideMargin;
+  float FFyBottom = FastForwardY + FastForwardHeight - FFsideMargin;
+  // First (right) triangle (for fast forward, left triangle tip is on the right)
+  float FFleftTri_x2 = FastForwardX + FastForwardWidth - FFsideMargin;
+  float FFleftTri_x1 = FFleftTri_x2 - FFtriWidth;
+  triangle(FFleftTri_x2, FFcenterY, FFleftTri_x1, FFyTop, FFleftTri_x1, FFyBottom);
+  // Second (left) triangle, touching the first one
+  float FFrightTri_x2 = FFleftTri_x1;
+  float FFrightTri_x1 = FFrightTri_x2 - FFtriWidth;
+  triangle(FFrightTri_x2, FFcenterY, FFrightTri_x1, FFyTop, FFrightTri_x1, FFyBottom);
   //
   // Fast Reverse Button
   //
   fill(#FC9CC2);
   noStroke();
-  float margin = FastReverseWidth * 0.13;
-  float triWidth = (FastReverseWidth - 3 * margin) / 2.0;
-  //Left Triangle (Fast Reverse)
-  float x1 = FastReverseX + FastReverseWidth * 0.14;
-  float y1 = FastReverseY + FastReverseHeight / 2;
-  float x2 = x1 + triWidth;
-  float y2top = FastReverseY + margin;
-  float y2bottom = FastReverseY + FastReverseHeight - margin;
-  triangle(x1, y1, x2, y2top, x2, y2bottom);
-  //Right Triangle (Fast Reverse)
-  float x3 = x2 + FastReverseWidth * 0.07;
-  float x4 = x3 + triWidth;
-  triangle(x3, y1, x4, y2top, x4, y2bottom);
+  float sideMargin = FastReverseWidth * 0.13;
+  float triWidth = (FastReverseWidth - 2 * sideMargin) / 2.0; // Only 2 margins, one on each side
+  // Vertically centered
+  float FRcenterY = FastReverseY + FastReverseHeight / 2;
+  float yTop = FastReverseY + sideMargin;
+  float yBottom = FastReverseY + FastReverseHeight - sideMargin;
+  // First (left) triangle
+  float leftTri_x1 = FastReverseX + sideMargin;
+  float leftTri_x2 = leftTri_x1 + triWidth;
+  triangle(leftTri_x1, FRcenterY, leftTri_x2, yTop, leftTri_x2, yBottom);
+  // Second (right) triangle, touching the first one
+  float rightTri_x1 = leftTri_x2;
+  float rightTri_x2 = rightTri_x1 + triWidth;
+  triangle(rightTri_x1, FRcenterY, rightTri_x2, yTop, rightTri_x2, yBottom);
   //
-  /*
-  float FastReverseX = appWidth * 0.50;
-  float FastReverseY = appHeight * 0.5625;
-  float FastReverseWidth = appWidth * 0.03125;
-  float FastReverseHeight = appHeight * 0.046875;
   /*
   QuitButtonX = appWidth - appShortSide*1/20;
   QuitButtonY = 0;
