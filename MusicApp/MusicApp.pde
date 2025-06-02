@@ -297,10 +297,6 @@ void setup() {
   triangle(rightTri_x1, FRcenterY, rightTri_x2, yTop, rightTri_x2, yBottom);
   //
   /*
-  QuitButtonX = appWidth - appShortSide*1/20;
-  QuitButtonY = 0;
-  QuitButtonWidth = appShortSide*1/20;
-  QuitHeight = appShortSide*1/20;
   imageDivX = appWidth*1/4;
   imageDivY = appHeight*1/5;
   imageDivWidth = appWidth*1/2;
@@ -347,21 +343,60 @@ void setup() {
   float playy3 = centerY;
   triangle(playx1, playy1, playx2, playy2, playx3, playy3); // Draw the triangle
   //
-  /*
-  MuteButtonX = beginningButtonSpace + widthOfButton*1;
-  MuteButtonY = buttonY;
-  MuteButtonWidth = widthOfButton;
-  MuteButtonHeight = widthOfButton;
-  PreviousButtonX = beginningButtonSpace + widthOfButton*2;
-  PreviousButtonY = buttonY;
-  PreviousButtonWidth = widthOfButton;
-  PreviousButtonHeight = widthOfButton;
-  FastReverseButtonX = beginningButtonSpace + widthOfButton*3;
-  FastReverseButtonY = buttonY;
-  FastReverseButtonWidth = widthOfButton;
-  FastReverseButtonHeight = widthOfButton;
+  //Previous Button
   //
-  */
+  float PreviousX = appWidth * 0.59375;
+  float PreviousY = appHeight * 0.5625;
+  float PreviousWidth = appWidth * 0.03125;
+  float PreviousHeight = appHeight * 0.046875;
+
+  // Draw the box for reference (optional)
+  fill(#FFFFFF);
+  stroke(0);
+  rect(PreviousX, PreviousY, PreviousWidth, PreviousHeight);
+
+  // --- TRIANGLE (reversed, all new "P" variable names) ---
+  float PtriPad = 0.31;
+  float PtriWidth = PreviousWidth * (1 - PtriPad * 2);
+  float PtriHeight = PreviousHeight * (1 - PtriPad * 1);
+  float PcenterX = PreviousX + PreviousWidth / 2;
+  float PcenterY = PreviousY + PreviousHeight / 2;
+  float PtriX1 = PcenterX + PtriWidth / 2.5; // Right point of the triangle (reversed)
+  float PtriY1 = PcenterY - PtriHeight / 2;
+  float PtriX2 = PtriX1; // Bottom-right point
+  float PtriY2 = PcenterY + PtriHeight / 2;
+  float PtriX3 = PcenterX - PtriWidth / 2; // Left (tip) point
+  float PtriY3 = PcenterY;
+
+  // --- RECTANGLE (using Pause style, one bar, all new "P" variable names) ---
+  float PbarPad = 0.23;
+  float PavailWidth = PreviousWidth * (1 - 2 * PbarPad);
+  float PbarWidth = PavailWidth / 3.0;
+  float PbarHeight = PtriHeight; // Force bar to match triangle height
+
+  // Position rectangle: Align it so its right edge is just before the triangle tip, vertically centered
+  float Pgap = PbarWidth * 0.18; // small gap between triangle tip and bar
+  float PbarX = PtriX3 - Pgap - PbarWidth;
+  float PbarY = PcenterY - PbarHeight / 2;
+
+  // --- Center the triangle + bar as a group in the box ---
+  float PtotalWidth = (PtriX1 - PtriX3) + Pgap + PbarWidth;
+  float PgroupStartX = PreviousX + (PreviousWidth - PtotalWidth) / 2;
+
+  // Adjust all X positions so group is centered
+  float Pdx = PgroupStartX - PbarX; // align leftmost shape (bar) to groupStartX
+  PtriX1 += Pdx; PtriX2 += Pdx; PtriX3 += Pdx;
+  PbarX += Pdx;
+
+  // Draw triangle
+  noStroke();
+  fill(#FC9CC2);
+  triangle(PtriX1, PtriY1, PtriX2, PtriY2, PtriX3, PtriY3);
+
+  // Draw rectangle (bar)
+  fill(#FC9CC2);
+  rect(PbarX, PbarY, PbarWidth, PbarHeight, PbarWidth / 100);
+  //
   //Pause Button
   //
   float aavailableWidth = PauseWidth * (1 - 2 * paddingsmall);
@@ -429,11 +464,64 @@ void setup() {
   fastForwardY5 = fastForwardDivY + fastForwardDivHeight*1/2;
   fastForwardX6 = fastForwardDivX + fastForwardDivWidth*1/2;
   fastForwardY6 = fastForwardDivY + fastForwardDivHeight*3/4;
+  */
   //
-  nextDivX = beginningButtonSpace + widthOfButton*9;
-  nextDivY = buttonY;
-  nextDivWidth = widthOfButton;
-  nextDivHeight = widthOfButton;
+  //Next Button
+  //
+  // Provided box geometry (do not change these variable names)
+  float NextX = appWidth * 0.828125;
+  float NextY = appHeight * 0.5625;
+  float NextWidth = appWidth * 0.03125;
+  float NextHeight = appHeight * 0.046875;
+
+  // Draw the box for reference (optional)
+  fill(#FFFFFF);
+  stroke(0);
+  rect(NextX, NextY, NextWidth, NextHeight);
+
+  // --- TRIANGLE (using Play style, all new "N" variable names) ---
+  float NtriPad = 0.31;
+  float NtriWidth = NextWidth * (1 - NtriPad * 2);
+  float NtriHeight = NextHeight * (1 - NtriPad * 1);
+  float NcenterX = NextX + NextWidth / 2;
+  float NcenterY = NextY + NextHeight / 2;
+  float NtriX1 = NcenterX - NtriWidth / 2.5; // Left point of the triangle
+  float NtriY1 = NcenterY - NtriHeight / 2;
+  float NtriX2 = NtriX1; // Bottom-left point
+  float NtriY2 = NcenterY + NtriHeight / 2;
+  float NtriX3 = NcenterX + NtriWidth / 2; // Right (tip) point
+  float NtriY3 = NcenterY;
+
+  // --- RECTANGLE (using Pause style, one bar, all new "N" variable names) ---
+  float NbarPad = 0.23;
+  float NavailWidth = NextWidth * (1 - 2 * NbarPad);
+  float NbarWidth = NavailWidth / 3.0;
+  float NbarHeight = NtriHeight; // Force bar to match triangle height
+
+  // Position rectangle: Align it so its left edge is just past the triangle tip, vertically centered
+  float Ngap = NbarWidth * 0.18; // small gap between triangle tip and bar
+  float NbarX = NtriX3 + Ngap;
+  float NbarY = NcenterY - NbarHeight / 2;
+
+  // --- Center the triangle + bar as a group in the box ---
+  float NtotalWidth = (NtriX3 - NtriX1) + Ngap + NbarWidth;
+  float NgroupStartX = NextX + (NextWidth - NtotalWidth) / 2;
+
+  // Adjust all X positions so group is centered
+  float Ndx = NgroupStartX - NtriX1;
+  NtriX1 += Ndx; NtriX2 += Ndx; NtriX3 += Ndx;
+  NbarX += Ndx;
+
+  // Draw triangle
+  noStroke();
+  fill(#FC9CC2);
+  triangle(NtriX1, NtriY1, NtriX2, NtriY2, NtriX3, NtriY3);
+
+  // Draw rectangle (bar)
+  fill(#FC9CC2);
+  rect(NbarX, NbarY, NbarWidth, NbarHeight, NbarWidth / 100);
+  /*
+  //
   shuffleDivX = beginningButtonSpace + widthOfButton*10;
   shuffleDivY = buttonY;
   shuffleDivWidth = widthOfButton;
