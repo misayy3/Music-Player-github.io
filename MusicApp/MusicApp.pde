@@ -53,7 +53,7 @@ float LoopInfiniteButtonX, LoopInfiniteButtonY, LoopInfiniteButtonWidth, LoopInf
 float PreviousButtonX, PreviousButtonY, PreviousButtonWidth, PreviousButtonHeight;
 float MuteButtonX, MuteButtonY, MuteButtonWidth, MuteButtonHeight;
 float PauseButtonX, PauseButtonY, PauseButtonWidth, PauseButtonHeight;
-float PlayButtonX, PlayButtonY, PlayButtonWidth, PlayButtonHeight;
+float PlayButtonX1, PlayButtonY1, PlayButtonX2, PlayButtonY2, PlayButtonX3, PlayButtonY3, PlayButtonWidth, PlayButtonHeight;
 float StopButtonX, StopButtonY, StopButtonWidth, StopButtonHeight;
 float NextButtonX, NextButtonY, NextButtonWidth, NextButtonHeight;
 float ShuffleButtonX, ShuffleButtonY, ShuffleButtonWidth, ShuffleButtonHeight;
@@ -238,6 +238,42 @@ void setup() {
   //
   //Quit Button
   //
+  //Mute Button
+  //
+  //rect
+  //
+  noFill();
+  stroke(0);
+  rect(MuteX, MuteY, MuteWidth, MuteHeight);
+  // Calculate the inner rectangle's position and size
+  float innerX = MuteX + (1.0/4) * MuteWidth;
+  float innerY = MuteY + (3.0/8) * MuteHeight;
+  float innerWidth = (1.0/3 - 1.0/4) * MuteWidth;
+  float innerHeight = (5.0/8 - 3.0/8) * MuteHeight;
+  fill(#FC9CC2);
+  noStroke();
+  rect(innerX, innerY, innerWidth, innerHeight);
+  //quad thing
+  noFill();
+  stroke(0);
+  float MRx1 = MuteX + (1.0/3) * MuteWidth;
+  float MRy1 = MuteY + (3.0/8) * MuteHeight;
+  float MRx2 = MuteX + (1.0/3) * MuteWidth;
+  float MRy2 = MuteY + (5.0/8) * MuteHeight;
+  float MRx3 = MuteX + (1.0/2) * MuteWidth;
+  float MRy3 = MuteY + (1.0/4) * MuteHeight;
+  float MRx4 = MuteX + (1.0/2) * MuteWidth;
+  float MRy4 = MuteY + (3.0/4) * MuteHeight;
+  // Draw the quad
+  fill(#FC9CC2);
+  noStroke();
+  quad(MRx1, MRy1, MRx2, MRy2, MRx4, MRy4, MRx3, MRy3); // Order matters for quads!
+  //curved line things
+  //
+  
+
+  //
+  //
   float QX = appWidth * 0.9375;
   float QY = appHeight * 0.0;
   float QWidth = appWidth * 0.0625;
@@ -320,7 +356,7 @@ void setup() {
   float squareX = StopX + (StopWidth - squareSize) / 2;
   float squareY = StopY + (StopHeight - squareSize) / 2;
   noStroke();
-  fill(#FC9CC2); // Red color
+  fill(#FC9CC2);
   rect(squareX, squareY, squareSize, squareSize);
   //
   //Play Button
@@ -330,18 +366,18 @@ void setup() {
   rect(PlayX, PlayY, PlayWidth, PlayHeight);
   noStroke();
   fill(#FC9CC2);
-  float padding = 0.29;
-  float triangleWidth = PlayWidth * (1 - padding * 2);
-  float triangleHeight = PlayHeight * (1 - padding * 1);
-  float centerX = PlayX + PlayWidth / 2;
-  float centerY = PlayY + PlayHeight / 2;
-  float playx1 = centerX - triangleWidth / 2.5; // Left point of the triangle
-  float playy1 = centerY - triangleHeight / 2;
-  float playx2 = playx1; // Bottom-left point of the triangle
-  float playy2 = centerY + triangleHeight / 2;
-  float playx3 = centerX + triangleWidth / 2; // Right point of the triangle
-  float playy3 = centerY;
-  triangle(playx1, playy1, playx2, playy2, playx3, playy3); // Draw the triangle
+  float PlayButtonPadding = 0.29;
+  float triangleWidth = PlayWidth * (1 - PlayButtonPadding * 2);
+  float triangleHeight = PlayHeight * (1 - PlayButtonPadding * 1);
+  float PlayButtonCenterX = PlayX + PlayWidth / 2;
+  float PlayButtonCenterY = PlayY + PlayHeight / 2;
+  PlayButtonX1 = PlayButtonCenterX - triangleWidth / 2.5;
+  PlayButtonY1 = PlayButtonCenterY - triangleHeight / 2;
+  PlayButtonX2 = PlayButtonX1;
+  PlayButtonY2 = PlayButtonCenterY + triangleHeight / 2;
+  PlayButtonX3 = PlayButtonCenterX + triangleWidth / 2;
+  PlayButtonY3 = PlayButtonCenterY;
+  triangle(PlayButtonX1, PlayButtonY1, PlayButtonX2, PlayButtonY2, PlayButtonX3, PlayButtonY3);
   //
   //Previous Button
   //
