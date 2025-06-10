@@ -271,27 +271,39 @@ void setup() {
   //curved line things
   //
   
-
-  //
-  //
-  float QX = appWidth * 0.9375;
-  float QY = appHeight * 0.0;
-  float QWidth = appWidth * 0.0625;
-  float QHeight = appHeight * 0.12;
+  //x line over it
+    //
   pushStyle(); // Save current style settings
-  float QMargin = QWidth * 0.22; // Margin so the X doesn't touch the edge
-  float QX1_start = QX + QMargin;
-  float QX1_end = QX + QWidth - QMargin;
-  float QY1_start = QY + QMargin;
-  float QY1_end = QY + QHeight - QMargin;
+  float MuteMargin = MuteWidth * 0.22; // Margin so the X doesn't touch the edge
+  float MuteX1_start = MuteX + MuteMargin;
+  float MuteX1_end = MuteX + MuteWidth - MuteMargin;
+  float MuteY1_start = MuteY + MuteMargin;
+  float MuteY1_end = MuteY + MuteHeight - MuteMargin;
+  stroke(#FC9CC2);
+  strokeWeight(MuteWidth * 0.10); // Thicker for blocky look
+  strokeCap(SQUARE);
+  noFill();
+  // First diagonal
+  line(MuteX1_start, MuteY1_start, MuteX1_end, MuteY1_end);
+  // Second diagonal
+  line(MuteX1_start, MuteY1_end, MuteX1_end, MuteY1_start);
+  popStyle(); // Restore previous style settings
+  //
+  //
+  pushStyle(); // Save current style settings
+  float QuitMargin = QuitWidth * 0.22; // Margin so the X doesn't touch the edge
+  float QuitX1_start = QuitX + QuitMargin * 0.01;
+  float QuitX1_end = QuitX + QuitWidth - QuitMargin;
+  float QuitY1_start = QuitY + QuitMargin;
+  float QuitY1_end = QuitY + QuitHeight - QuitMargin;
   stroke(#FC9CC2);
   strokeWeight(QWidth * 0.10); // Thicker for blocky look
   strokeCap(SQUARE);
   noFill();
   // First diagonal
-  line(QX1_start, QY1_start, QX1_end, QY1_end);
+  line(QuitX1_start, QuitY1_start, QuitX1_end, QuitY1_end);
   // Second diagonal
-  line(QX1_start, QY1_end, QX1_end, QY1_start);
+  line(QuitX1_start, QuitY1_end, QuitX1_end, QuitY1_start);
   popStyle(); // Restore previous style settings
   //
   // Fast Forward Button
